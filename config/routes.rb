@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :neighborhoods
   resources :demographic_cards
   resources :permits
+  resources :home
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get '/home' => 'home#show'
   post '/permits' => 'permits#create'
   get '/permits' => 'permits#index'
   get '/permits/neighborhoods' => 'permits#neighborhoodpermits'

@@ -4,13 +4,20 @@ class VacantsController < ApplicationController
         @neighborhoods= Vacant.all.collect { |p| p["neighborhood"] }.uniq
 
         #binding.pry
-        arr = []
-        @neighborhoods.each do |n|
-            binding.pry
-            x = Vacant.all.collect {|v| v["neighborhood"].split === n.split}
-            arr.push(x)
-        end
-        render json: @neighborhoods
+        neighborhood_vacants = {} # Initialize an empty hash to store vacants by neighborhood
+
+    @neighborhoods.each do |n|
+        neighborhood_vacants[n] = Vacant.all.select { |v| v["neighborhood"].split == n.split }
+    end
+    #binding.pry
+    neighborhood_stats = []
+
+    neighborhood_vacants.each do |neighborhood, vacants|
+        neighborhood_stats << { neighborhood: neighborhood.strip, vacant_count: vacants.size }
+    end
+
+    #binding.pry
+        render json: neighborhood_stats.sort_by {|v| -v[:vacant_count]}
     end
 
     def index
