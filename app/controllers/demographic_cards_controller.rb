@@ -3,7 +3,7 @@ class DemographicCardsController < ApplicationController
 
   # GET /demographic_cards
   def index
-    @demographic_cards = DemographicCard.all
+    @demographic_cards = DemographicCard.all.uniq
 
     render json: @demographic_cards
   end
@@ -15,8 +15,26 @@ class DemographicCardsController < ApplicationController
 
   # POST /demographic_cards
   def create
+    binding.pry
     @demographic_card = DemographicCard.new(demographic_card_params)
-
+    params['neighborhoods'].each do |p|
+      @neighborhood = neighborhood.new
+      @neighborhood.address = p['properties']['Name']
+      @neighborhood.description = p['properties']['Population']
+      @neighborhood.neighborhood = p['properties']['White']
+      @neighborhood.issued_date = p['properties']['Black_AfAm']
+      @neighborhood.case_number = p['properties']['AmInd_AkNa']
+      @neighborhood.case_number = p['properties']['Asian']
+      @neighborhood.case_number = p['properties']['NatHaw_Pac']
+      @neighborhood.case_number = p['properties']['Other_Race']
+      @neighborhood.case_number = p['properties']['TwoOrMore']
+      @neighborhood.case_number = p['properties']['Hisp_Lat']
+      @neighborhood.case_number = p['properties']['Housing']
+      @neighborhood.case_number = p['properties']['Occupied']
+      @neighborhood.case_number = p['properties']['Unoccupied']
+      
+      @neighborhood.save
+    end
     if @demographic_card.save
       render json: @demographic_card, status: :created, location: @demographic_card
     else

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get '/permits/neighborhoods' => 'permits#neighborhoodpermits'
 
   get '/neighborhoods' => 'neighborhoods#index'
-  
+  get '/neighborhood' => 'neighborhoods#show'
+
+  post '/neighborhoods' => 'neighborhoods#create'
   # Defines the root path route ("/")
   # root "articles#index"
 end

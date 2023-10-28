@@ -5,9 +5,9 @@ class PermitsController < ApplicationController
 
   # GET /permits
   def index
-    @permits = Permit.all
+    @permits = Permit.all.uniq
     #binding.pry
-    render json: @permits
+    render json: @permits.uniq()
   end
 
   def show

@@ -17,6 +17,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_221116) do
   end
 
   create_table "neighborhoods", force: :cascade do |t|
+    t.string "name"
+    t.string "population"
+    t.string "white"
+    t.string "black_AfAm"
+    t.string "amInd_AkNa"
+    t.string "asian"
+    t.string "natHaw_Pac"
+    t.string "other_Race"
+    t.string "twoOrMore"
+    t.string "isp_Lat"
+    t.string "housing"
+    t.string "occupied"
+    t.string "unoccupied"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
