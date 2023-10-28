@@ -9,8 +9,11 @@ Rails.application.routes.draw do
 
   get '/neighborhoods' => 'neighborhoods#index'
   get '/neighborhood' => 'neighborhoods#show'
-
   post '/neighborhoods' => 'neighborhoods#create'
+
+  post '/vacants' => 'vacants#create'
+  get '/vacants' => 'vacants#index'
+  get '/vacants/neighborhoods' => 'vacants#neighborhood_breakdown'
   # Defines the root path route ("/")
   # root "articles#index"
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_221116) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_28_033727) do
   create_table "demographic_cards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,6 +40,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_221116) do
     t.string "neighborhood"
     t.string "issued_date"
     t.string "case_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vacants", force: :cascade do |t|
+    t.string "address"
+    t.string "neighborhood"
+    t.string "council_district"
+    t.string "typology"
+    t.string "datenotice"
+    t.string "datecancel"
+    t.string "owner_abbr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
